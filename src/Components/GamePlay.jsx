@@ -10,8 +10,8 @@ const GamePlay = () => {
   const [draw, setDraw] = useState(1);
   const [selected, setSelected] = useState(null);
   const [Totalsc, setTotalsc] = useState(0);
-  //   const [Chance, setChance] = useState(5);
-  //   const [gameOver, setGameOver] = useState(false);
+  const [Chance, setChance] = useState(5);
+  const [gameOver, setGameOver] = useState(false);
 
   const handleClick = (number) => {
     setSelected(number);
@@ -35,31 +35,37 @@ const GamePlay = () => {
     } else if (selected === randomNo) {
       setTotalsc(Totalsc + randomNo);
       setSelected(null);
+      updateChance(Chance - 1);
     } else {
       setTotalsc(Totalsc - 2);
       setSelected(null);
+      updateChance(Chance - 1);
     }
-
-    // setChance(prevChance => {
-    //   if (prevChance === 1) {
-    //     setGameOver(true);
-    //     return 5; // Reset chances after game over
-    //   }
-    //   return prevChance - 1;
-    // });
   }
+
+  const updateChance = (newChance) => {
+    setChance(newChance);
+    if (newChance === 0) {
+      setGameOver(true);
+    }
+  };
 
   const getrandom = () => {
     getRandomArbitrary(1, 7);
   };
 
+  
   const handleReset = () => {
     setDraw(1);
     setTotalsc(0);
     setSelected(null);
-    // setChance(5);
-    // setGameOver(false);
+    setChance(5);
+    setGameOver(false);
   };
+
+  const Gameover = ()=>{
+    setGameOver(false)
+  }
 
   return (
     <>
@@ -68,19 +74,19 @@ const GamePlay = () => {
           <TotalScore Totalsc={Totalsc} />
           <NumberSelector handleClick={handleClick} buttonStyle={buttonStyle} />
         </div>
-        <div className=" grid place-content-center h-[30rem]">
+        <div className="grid place-content-center h-[30rem]">
           <RoleDice
             getrandom={getrandom}
             draw={draw}
             hanldereset={handleReset}
           />
         </div>
-        {/* <div className="absolute top-3 lg:left-[46%] left-[68%] px-2 py-1 bg-white shadow-lg text-lg font-semibold border border-black">
+        <div className="absolute top-3 lg:left-[46%] left-[68%] px-2 py-1 bg-white shadow-lg text-lg font-semibold border border-black">
           Chance: {Chance}
-        </div> */}
+        </div>
       </div>
 
-      {/* {gameOver ? <GameOver setGameOver={setGameOver} handleReset={handleReset} /> : null} */}
+      {gameOver ? <GameOver Totalsc={Totalsc} handleReset={handleReset}  /> : null}
 
       <ToastContainer />
     </>

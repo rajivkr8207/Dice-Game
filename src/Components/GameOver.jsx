@@ -1,21 +1,25 @@
-import React from 'react'
+import React from 'react';
 import { RxCross2 } from "react-icons/rx";
-const GameOver = ({setGameOver}) => {
+import TotalScore from './TotalScore';
+
+const GameOver = ({ handleReset, Totalsc }) => {
   return (
-    <>
-        <div className="absolute top-0 left-0 w-full h-screen grid place-content-center bg[#24232369] backdrop-blur-lg">
-        <div className="bg-[#e0dddd] lg:w-[50rem] w-full  h-[20rem] rounded-lg p-2 relative">
-          <div className="absolute top-5 right-3" onClick={setGameOver(false)} >
-            <RxCross2 className="text-4xl" />
-          </div>
-          <div className="flex justify-center my-auto  w-full h-full flex-col lg:gap-2 gap-5">
-            <h1 className="text-2xl font-bold ">How to play Dice Game?</h1>
-            
-          </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+      <div className="relative bg-white shadow-lg rounded-lg p-6 w-full max-w-xl">
+        <button 
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 focus:outline-none"
+          onClick={handleReset}
+        >
+          <RxCross2 className="text-2xl" />
+        </button>
+        <div className="flex flex-col items-center justify-center space-y-4">
+          <h1 className="text-4xl font-bold text-gray-800">Game Over</h1>
+          <h1 className="text-6xl font-extrabold text-red-600">{Totalsc}</h1>
+          <p className="text-lg font-semibold text-gray-600">Your Total Score</p>
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default GameOver
+export default GameOver;

@@ -1,24 +1,25 @@
 import React from "react";
 import { RxCross2 } from "react-icons/rx";
-const Rules = ({handlerule}) => {
+
+const Rules = ({ handlerule }) => {
   return (
     <>
-      <div className="absolute top-0 left-0 w-full h-screen grid place-content-center bg[#24232369] backdrop-blur-lg">
-        <div className="bg-[#e0dddd] lg:w-[50rem] w-full  h-[20rem] rounded-lg p-2 relative">
-          <div className="absolute top-5 right-3" onClick={handlerule}>
-            <RxCross2 className="text-4xl" />
-          </div>
-          <div className="flex justify-center my-auto  w-full h-full flex-col lg:gap-2 gap-5">
-            <h1 className="text-2xl font-bold ">How to play Dice Game?</h1>
-            <ul>
-                
-                <li className="text-md font-semibold ">1. select any number</li>
-            <li className="text-md font-semibold ">2. click on play button</li>
-            <li className="text-md font-semibold ">
-             3. after click on play button if selected number is equal to dice
-              number you will get same point as dice if you get wrong guess then
-              2 point will be dedcuted{" "}
-            </li>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+        <div className="bg-white shadow-lg lg:w-[50rem] w-full h-[20rem] rounded-lg p-6 relative">
+          <button
+            className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 focus:outline-none"
+            onClick={handlerule}
+          >
+            <RxCross2 className="text-3xl" />
+          </button>
+          <div className="flex flex-col justify-center h-full space-y-4">
+            <h1 className="text-3xl font-bold text-gray-800 text-center">How to play Dice Game?</h1>
+            <ul className="space-y-2 text-gray-700">
+              <li className="text-md font-medium">1. Select any number</li>
+              <li className="text-md font-medium">2. Click on play button</li>
+              <li className="text-md font-medium">
+                3. After clicking on the play button, if the selected number matches the dice number, you will get the same points as the dice. If your guess is wrong, 2 points will be deducted.
+              </li>
             </ul>
           </div>
         </div>
