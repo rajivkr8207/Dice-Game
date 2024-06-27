@@ -4,11 +4,11 @@ import Buttonstyle from "./Buttonstyle";
 import { FaQuestion } from "react-icons/fa";
 import Rules from "./Rules";
 const Startgame = (props) => {
-    const [rule, setRule] = useState(false)
+    // const [rule, setRule] = useState(false)
 
-    const handlerule =()=>{
-        setRule(!rule)
-    }
+    // const handlerule =()=>{
+    //     setRule(!rule)
+    // }
   return (
     <>
       <div className="container w-full h-screen flex justify-center items-center ">
@@ -25,20 +25,12 @@ const Startgame = (props) => {
             >
               play now
             </button>
-            <button
-              onClick={handlerule}
-              className=" flex gap-2 px-10 py-2 bg-white capitalize text-black font-bold text-center rounded text-lg  lg:mr-0  lg:ml-auto lg:mx-0 mx-auto hover:bg-black hover:text-white border-2 border-black"
-            >
-              Rules <FaQuestion className="my-auto" />
-            </button>
+            
             </div>
           </div>
         </div>
       </div>
 
-{rule ?  <Rules handlerule={handlerule} /> : null}
-
-    
 
     </>
   );

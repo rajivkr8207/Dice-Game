@@ -8,11 +8,7 @@ import dice6 from "../assets/dice_6.png";
 import { FaQuestion } from "react-icons/fa";
 import Rules from "./Rules";
 const RoleDice = ({ draw, getrandom, hanldereset }) => {
-    const [rule, setRule] = useState(false)
-
-    const handlerule =()=>{
-        setRule(!rule)
-    }
+    
   const diceImages = [dice1, dice2, dice3, dice4, dice5, dice6];
 
   return (
@@ -34,16 +30,11 @@ const RoleDice = ({ draw, getrandom, hanldereset }) => {
           >
             Reset
           </button>
-          <button
-            onClick={handlerule} 
-            className="absolute lg:top-[10rem] top-[12rem] lg:right-[4rem] right-1  px-2 py-2 bg-white  text-black capitalize font-bold text-center rounded text-lg  mx-auto hover:bg-black hover:text-white border-2 border-black"
-          >
-             <FaQuestion className="my-auto" />
-          </button>
+          
         </div>
       </div>
 
-      {rule ?  <Rules handlerule={handlerule} /> : null}
+      
     </>
   );
 };
